@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">humoTransferSample</string>
+    <string name="layout_login_text"><style>Настоящим, я соглашаюсь и принимаю условия описанные в </style> <u>Лицензионном соглашении</u>, <u>Публичной оферте</u> и <u>Политике конфиденциальности</u></string>
 </resources>
