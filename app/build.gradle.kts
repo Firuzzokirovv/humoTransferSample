@@ -7,6 +7,10 @@ android {
     namespace = "com.firuz.humotransfersample"
     compileSdk = 34
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.firuz.humotransfersample"
         minSdk = 24
@@ -28,6 +32,7 @@ android {
     }
 
     viewBinding.isEnabled = true
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

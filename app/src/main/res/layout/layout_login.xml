@@ -12,12 +12,13 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/login_close_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#f5f5f5"
             android:elevation="0dp">
+
             <TextView
+                android:id="@+id/login_close_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -65,10 +66,10 @@
             app:cardCornerRadius="14sp">
 
             <EditText
+                android:hint="Введите номер телефона"
                 android:id="@+id/login_register_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:autofillHints="Введите номер телефона"
                 android:background="@null"
                 android:inputType="phone|number"
                 android:paddingHorizontal="12dp"
@@ -103,8 +104,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_continue_button"
                 app:cornerRadius="16dp"
-                android:textColor="@color/white"
-                android:backgroundTint="#DD6018"
+                android:textColor="@color/black"
+                android:backgroundTint="#E0E0E0"
                 android:text="Продолжить"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

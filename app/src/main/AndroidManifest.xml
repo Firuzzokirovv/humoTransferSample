@@ -18,6 +18,16 @@
         </activity>
 
         <activity
+            android:name=".ChooseCountry.ChooseCountryActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".Transfer.TransferActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
             android:name=".Login.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -26,14 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:name=".Transfer.TransferActivity"
-            android:exported="false">
-
-        </activity>
-
-
 
 
     </application>

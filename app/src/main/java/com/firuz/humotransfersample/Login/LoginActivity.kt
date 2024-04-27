@@ -2,9 +2,7 @@ package com.firuz.humotransfersample.Login
 
 import android.content.Intent
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -12,49 +10,62 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import com.firuz.humotransfersample.R
+
+import com.firuz.humotransfersample.databinding.LayoutLoginBinding
 import com.firuz.humotransfersample.mainScreen.MainActivity
-import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
 
-    private var loginPhonenumber: EditText? = null
-    private var loginCheckbox: CheckBox? = null
-    private var loginContinueButton: Button? = null
-    private var loginTextClose: CardView? = null
+    private lateinit var binding: LayoutLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_login)
+        binding = LayoutLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        loginPhonenumber = findViewById<EditText>(R.id.login_register_phone_number)
-        loginCheckbox = findViewById(R.id.login_checkbox)
-        loginContinueButton = findViewById(R.id.login_continue_button)
-        loginTextClose = findViewById(R.id.login_close_text)
 
-        loginPhonenumber?.doAfterTextChanged() {s: Editable? ->
+
+        binding.loginCloseApp.setOnClickListener{
+            finish()
+        }
+
+
+
+        binding.loginCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked && binding.loginRegisterPhoneNumber.text?.length == 9) {
+                binding.loginContinueButton.setBackgroundColor(0xFFDD6018.toInt())
+                binding.loginContinueButton.setTextColor(0xFFFFFFFF.toInt())
+                binding.loginContinueButton.setOnClickListener {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
+        } else {
+                binding.loginContinueButton.setBackgroundColor(0xFFE0E0E0.toInt())
+                binding.loginContinueButton.setTextColor(0xFF000000.toInt())
+            }
+
+        binding.loginRegisterPhoneNumber.doAfterTextChanged() { s: Editable? ->
 
             val phoneNumber = s?.toString()
-            if(phoneNumber?.length == 9 ){
-                if (loginCheckbox?.isChecked == true ) {
-                        loginContinueButton?.setOnClickListener {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+            if(phoneNumber?.length == 9 && binding.loginCheckbox.isChecked){
+                binding.loginContinueButton.setBackgroundColor(0xFFDD6018.toInt())
+                binding.loginContinueButton.setTextColor(0xFFFFFFFF.toInt())
+                binding.loginContinueButton.setOnClickListener {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     }
-                }
+            } else {
+                binding.loginContinueButton.setTextColor(0xFF000000.toInt())
+                binding.loginContinueButton.setBackgroundColor(0xFFE0E0E0.toInt())
             }
-            val activity: LoginActivity = LoginActivity()
-
-            loginTextClose?.setOnClickListener{
-                finish()
-                System.out.close()
-            }
-
-        }
+    }
 
 
 
 
     }
 }
+}
+
