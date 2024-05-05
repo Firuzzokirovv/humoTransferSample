@@ -31,9 +31,9 @@ data class ResultUser(
 data class Username(
     @SerializedName("title")
     val title: String,
-    @SerializedName("first_name")
+    @SerializedName("first")
     val first: String,
-    @SerializedName("last_name")
+    @SerializedName("last")
     val last: String
 )
 
